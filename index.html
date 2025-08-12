@@ -1,19 +1,46 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium İş Ayakkabıları | Kalite ve Konfor</title>
+    <meta name="description" content="Profesyonel iş ayakkabıları | Yüksek kaliteli, konforlu ve dayanıklı iş ayakkabı modelleri için hemen ziyaret edin">
+    <meta name="keywords" content="iş ayakkabısı, güvenlik ayakkabısı, iş botu, erkek iş ayakkabısı, dayanıklı ayakkabı">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Premium İş Ayakkabıları | Kalite ve Konfor | isayakkabim.com">
+    <meta property="og:description" content="Profesyonel iş ayakkabıları, gün boyu konfor ve maksimum dayanıklılık">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://isayakkabim.com">
+    <meta property="og:image" content="https://isayakkabim.com/images/logo/isayakkabim.png">
+    <link rel="canonical" href="https://isayakkabim.com">
+    <link rel="icon" href="https://isayakkabim.com/images/logo/isayakkabim.png" type="image/png">
+    <title>Premium İş Ayakkabıları | Kalite ve Konfor | isayakkabim.com</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "İş Ayakkabım",
+        "url": "https://isayakkabim.com",
+        "logo": "https://isayakkabim.com/images/logo/isayakkabim.png",
+        "description": "Profesyonel iş ayakkabıları satışı",
+        "sameAs": [
+            "https://www.facebook.com/isayakkabim",
+            "https://www.instagram.com/isayakkabim"
+        ]
+    }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        
         :root {
             --primary: #2b5876;
             --secondary: #4e4376;
             --accent: #f39c12;
             --text: #2c3e50;
             --light: #ecf0f1;
+            --logo-width: 180px; /* Logo genişliği buradan ayarlanabilir */
+            --logo-height: auto; /* Oranları korumak için auto bırakıldı */
         }
         
         * {
@@ -27,6 +54,7 @@
             color: var(--text);
             overflow-x: hidden;
             min-height: 100vh;
+            line-height: 1.6;
         }
         
         .bg-animation {
@@ -73,16 +101,20 @@
             margin-bottom: 4rem;
         }
         
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
+        .logo-container {
             display: flex;
             align-items: center;
+            text-decoration: none;
         }
         
-        .logo span {
-            color: var(--accent);
+        .logo-img {
+            width: var(--logo-width);
+            height: var(--logo-height);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-img:hover {
+            transform: scale(1.05);
         }
         
         .hero {
@@ -91,7 +123,7 @@
         }
         
         h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
             margin-bottom: 1.5rem;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
@@ -100,7 +132,7 @@
         }
         
         .subtitle {
-            font-size: 1.4rem;
+            font-size: clamp(1rem, 2vw, 1.4rem);
             color: var(--text);
             margin-bottom: 3rem;
             max-width: 700px;
@@ -126,26 +158,10 @@
             z-index: 1;
         }
         
-        .cta-button:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, var(--secondary), var(--primary));
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .cta-button:hover:before {
-            opacity: 1;
-        }
-        
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
         }
         
         .features {
@@ -160,13 +176,11 @@
             border-radius: 15px;
             padding: 2.5rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
+            transition: transform 0.3s ease;
         }
         
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
         }
         
         .feature-icon {
@@ -189,84 +203,116 @@
             font-size: 0.9rem;
         }
         
+        .breadcrumb {
+            padding: 1rem 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
             header {
                 flex-direction: column;
                 margin-bottom: 2rem;
             }
             
-            .logo {
-                margin-bottom: 1rem;
+            :root {
+                --logo-width: 140px; /* Mobilde logo boyutunu küçültme */
             }
         }
         
-        /* Animasyonlar */
-        .animate-delay-1 {
-            animation-delay: 0.2s;
+        /* Performans iyileştirmeleri */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
         
-        .animate-delay-2 {
-            animation-delay: 0.4s;
+        /* Lazy loading */
+        .lazy {
+            opacity: 0;
+            transition: opacity 0.3s;
         }
         
-        .animate-delay-3 {
-            animation-delay: 0.6s;
+        .lazy.loaded {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
-    <div class="overlay"></div>
+    <div class="bg-animation" aria-hidden="true"></div>
+    <div class="overlay" aria-hidden="true"></div>
     
     <div class="container">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="https://isayakkabim.com">Ana Sayfa</a> > <span>Hoş Geldiniz</span>
+        </nav>
+        
         <header>
-            <div class="logo animate__animated animate__fadeInDown">
-                İŞ<span>AYAKKABISI</span>
-            </div>
+            <a href="https://isayakkabim.com" class="logo-container animate__animated animate__fadeInDown">
+                <img src="images/logo/isayakkabim.png" alt="İş Ayakkabım Logo" class="logo-img lazy" loading="lazy">
+            </a>
         </header>
         
-        <section class="hero">
-            <h1 class="animate__animated animate__fadeIn">Profesyonel İş Ayakkabılarında <br>Kalitenin Adresi</h1>
-            <p class="subtitle animate__animated animate__fadeIn animate-delay-1">Gün boyu konfor ve dayanıklılık için özel tasarım iş ayakkabıları</p>
-            <a href="https://isayakkabisi.ikas.shop" class="cta-button animate__animated animate__fadeInUp animate-delay-2">ÜRÜNLERİMİZİ KEŞFET →</a>
-        </section>
-        
-        <div class="features">
-            <div class="feature-card animate__animated animate__fadeInUp animate-delay-1">
-                <div class="feature-icon">✓</div>
-                <h3 class="feature-title">Premium Malzeme</h3>
-                <p>Deri ve nefes alabilen yüksek kaliteli malzemelerle üretilmiştir</p>
-            </div>
+        <main>
+            <section class="hero">
+                <h1 class="animate__animated animate__fadeIn">Profesyonel İş Ayakkabılarında <br>Kalitenin Adresi</h1>
+                <p class="subtitle animate__animated animate__fadeIn animate-delay-1">Gün boyu konfor ve dayanıklılık için özel tasarım iş ayakkabıları. İş güvenliği standartlarına uygun, ergonomik ve uzun ömürlü ürünlerimizi keşfedin.</p>
+                <a href="https://isayakkabim.myikas.com/" class="cta-button animate__animated animate__fadeInUp animate-delay-2" aria-label="Ürünleri inceleyin">ÜRÜNLERİMİZİ KEŞFET →</a>
+            </section>
             
-            <div class="feature-card animate__animated animate__fadeInUp animate-delay-2">
-                <div class="feature-icon">♥</div>
-                <h3 class="feature-title">Ergonomik Tasarım</h3>
-                <p>Ayak sağlığını koruyan anatomik taban ve destek sistemi</p>
+            <div class="features">
+                <div class="feature-card animate__animated animate__fadeInUp animate-delay-1" itemscope itemtype="https://schema.org/Product">
+                    <div class="feature-icon">✓</div>
+                    <h2 class="feature-title" itemprop="name">Premium Malzeme</h2>
+                    <p itemprop="description">Gerçek deri ve nefes alabilen yüksek kaliteli malzemelerle üretilmiş, uzun ömürlü iş ayakkabıları</p>
+                </div>
+                
+                <div class="feature-card animate__animated animate__fadeInUp animate-delay-2" itemscope itemtype="https://schema.org/Product">
+                    <div class="feature-icon">♥</div>
+                    <h2 class="feature-title" itemprop="name">Ergonomik Tasarım</h2>
+                    <p itemprop="description">Ayak sağlığını koruyan anatomik taban ve destek sistemi ile 8 saatlik vardiyalarda bile konfor</p>
+                </div>
+                
+                <div class="feature-card animate__animated animate__fadeInUp animate-delay-3" itemscope itemtype="https://schema.org/Product">
+                    <div class="feature-icon">⚡</div>
+                    <h2 class="feature-title" itemprop="name">İş Güvenliği</h2>
+                    <p itemprop="description">EN ISO 20345 standardına uygun, yüksek darbe direnci ve kaymaz taban ile maksimum koruma</p>
+                </div>
             </div>
-            
-            <div class="feature-card animate__animated animate__fadeInUp animate-delay-3">
-                <div class="feature-icon">⚡</div>
-                <h3 class="feature-title">İş Güvenliği</h3>
-                <p>Yüksek darbe direnci ve kaymaz taban ile maksimum koruma</p>
-            </div>
-        </div>
+        </main>
         
-        <footer class="animate__animated animate__fadeIn animate-delay-3">
-            <p>© 2023 İş Ayakkabısı. Tüm hakları saklıdır.</p>
+        <footer>
+            <p>© <span itemprop="copyrightYear">2025</span> isayakkabim.com . Tüm hakları saklıdır.</p>
         </footer>
     </div>
     
     <script>
-        // Scroll animasyonları için basit bir kontrol
+        // Lazy loading ve performans iyileştirmeleri
         document.addEventListener('DOMContentLoaded', function() {
+            // Lazy load için
+            const lazyLoad = (target) => {
+                const io = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src || img.src;
+                            img.classList.add('loaded');
+                            observer.disconnect();
+                        }
+                    });
+                });
+                io.observe(target);
+            };
+            
+            const lazyElements = document.querySelectorAll('.lazy');
+            lazyElements.forEach(lazyLoad);
+            
+            // Scroll animasyonları
             const animatedElements = document.querySelectorAll('.animate__animated');
             
             function checkScroll() {
@@ -281,7 +327,7 @@
             }
             
             window.addEventListener('scroll', checkScroll);
-            checkScroll(); // Sayfa yüklendiğinde kontrol et
+            checkScroll();
         });
     </script>
 </body>
